@@ -3,50 +3,43 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Página não encontrada · Celebra</title>
+    <title>Página não encontrada · Celebraverso</title>
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#1b1040" />
     <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/assets/fonts/bricolage-grotesque.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <main class="page" style="justify-content: center; text-align: center">
-      <div class="glow glow-a" aria-hidden="true"></div>
-      <div class="glow glow-b" aria-hidden="true"></div>
-      <p class="brand">
-        <span class="sr-only">Celebra</span>
-        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
-          <defs>
-            <linearGradient id="celebra-c-404" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
-              <stop offset="0" stop-color="#7a4dff" />
-              <stop offset="0.55" stop-color="#5b2ee8" />
-              <stop offset="1" stop-color="#ff4f9a" />
-            </linearGradient>
-          </defs>
-          <path d="M44 15.5A19 19 0 1 0 44 48.5" stroke="url(#celebra-c-404)" stroke-width="15" stroke-linecap="round" fill="none" />
-          <path d="M52.00 21.50L54.76 28.34L61.50 31.00L54.76 33.66L52.00 40.50L49.24 33.66L42.50 31.00L49.24 28.34z" fill="#ffc933" />
-          <path d="M57.50 42.00L58.95 45.60L62.50 47.00L58.95 48.40L57.50 52.00L56.05 48.40L52.50 47.00L56.05 45.60z" fill="#12d6c4" />
-        </svg><span class="brand-word" aria-hidden="true">elebra</span>
-      </p>
-      <h1 class="headline" style="margin-top: 1.6rem">Esta página ainda não existe.</h1>
-      <p class="lead" style="margin-top: 1rem">
-        O Celebra está chegando. Enquanto isso, volte para a página inicial.
-      </p>
-      <p style="margin-top: 1.8rem">
-        <a
-          href="/"
-          style="
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            border-radius: 999px;
-            background: #ffc933;
-            color: #1b1040;
-            font-weight: 700;
-            text-decoration: none;
-          "
-          >Voltar ao início</a
-        >
-      </p>
+    <main class="error-page">
+      <div class="error-card">
+        <span class="hero-bg" aria-hidden="true"></span>
+        <p class="brand brand-light">
+          <span class="sr-only">Celebraverso</span>
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="celebraverso-c-404" x1="8" y1="6" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#7a4dff" />
+                <stop offset="0.55" stop-color="#5b2ee8" />
+                <stop offset="1" stop-color="#ff4f9a" />
+              </linearGradient>
+            </defs>
+            <path d="M44 15.5A19 19 0 1 0 44 48.5" stroke="url(#celebraverso-c-404)" stroke-width="15" stroke-linecap="round" fill="none" />
+            <path d="M13 26A19 19 0 0 1 24 14" stroke="#ffffff" stroke-opacity="0.35" stroke-width="2.6" stroke-linecap="round" fill="none" />
+            <path class="spark" d="M52.00 21.50L54.76 28.34L61.50 31.00L54.76 33.66L52.00 40.50L49.24 33.66L42.50 31.00L49.24 28.34z" fill="#ffc933" />
+            <path class="bit-mark" d="M57.50 42.00L58.95 45.60L62.50 47.00L58.95 48.40L57.50 52.00L56.05 48.40L52.50 47.00L56.05 45.60z" fill="#12d6c4" />
+          </svg><span class="brand-word" aria-hidden="true">elebra<span class="brand-suffix">verso</span></span>
+        </p>
+        <h1>Esta página ainda não existe.</h1>
+        <p>O Celebraverso está chegando. Enquanto isso, volte para a página inicial.</p>
+        <a class="btn btn-sun" href="/">Voltar ao início</a>
+      </div>
     </main>
   </body>
 </html>

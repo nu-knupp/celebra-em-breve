@@ -1,0 +1,63 @@
+/* Ajustes da pagina "Em breve" sobre o CSS renderizado da landing do app. */
+html {
+  color-scheme: light;
+}
+
+/* O wrapper das variantes nao pode alterar o flex do body. */
+#pagina-black,
+#pagina-off {
+  display: contents;
+}
+
+/* As secoes do app entram com animation-timeline: view(). Aqui o conteudo
+   precisa estar visivel mesmo sem rolagem, em qualquer navegador. */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Rotulo obrigatorio para os dados de demonstracao (numeros/datas/R$). */
+.exemplo-host {
+  position: relative !important;
+}
+
+.exemplo {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  z-index: 3;
+  padding: 0.12rem 0.45rem;
+  border-radius: 9999px;
+  background: rgb(27 16 64 / 0.72);
+  color: #fff;
+  font-family: Figtree, "Figtree Fallback", sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.exemplo-hero {
+  top: auto;
+  right: auto;
+  bottom: 0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .exemplo {
+    font-size: 0.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
