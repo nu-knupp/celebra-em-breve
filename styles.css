@@ -1,0 +1,541 @@
+/* Celebra — página "Em breve". Identidade: violeta, rosa, sol e água sobre tinta. */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("assets/fonts/bricolage-grotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Figtree";
+  src: url("assets/fonts/figtree.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --violet: #5b2ee8;
+  --violet-soft: #7a4dff;
+  --violet-deep: #4a22d0;
+  --pink: #ff4f9a;
+  --sun: #ffc933;
+  --aqua: #12d6c4;
+  --ink: #1b1040;
+  --ink-2: #2a1470;
+  --white: #ffffff;
+  --heading: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --sans: "Figtree", system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--sun);
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  top: 16px;
+  outline: 3px solid var(--white);
+  outline-offset: 2px;
+}
+
+.page {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100svh;
+  overflow: hidden;
+  padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.1rem, 5vw, 3rem) 2rem;
+  background-color: var(--ink);
+  background-image:
+    radial-gradient(60rem 34rem at 88% -10%, rgb(122 77 255 / 0.85), transparent),
+    radial-gradient(44rem 30rem at 0% 110%, rgb(255 79 154 / 0.45), transparent),
+    linear-gradient(160deg, var(--ink-2), var(--ink));
+}
+
+/* Brilhos suaves que respiram */
+.glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.glow-a {
+  top: -8rem;
+  right: -6rem;
+  width: 34rem;
+  height: 34rem;
+  background: var(--violet-soft);
+  animation: breathe 12s ease-in-out infinite;
+}
+
+.glow-b {
+  bottom: -10rem;
+  left: -8rem;
+  width: 30rem;
+  height: 30rem;
+  background: var(--pink);
+  opacity: 0.28;
+  animation: breathe 15s ease-in-out infinite reverse;
+}
+
+/* Confete decorativo */
+.confetti {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.bit {
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  opacity: 0.75;
+  animation: drift 16s linear infinite;
+}
+
+.bit-1 { top: 12%; left: 8%; background: var(--sun); transform: rotate(18deg); animation-delay: -1s; }
+.bit-2 { top: 22%; left: 88%; width: 7px; height: 7px; background: var(--aqua); border-radius: 50%; animation-delay: -5s; }
+.bit-3 { top: 62%; left: 5%; width: 8px; height: 14px; background: var(--pink); animation-delay: -9s; }
+.bit-4 { top: 74%; left: 92%; background: var(--violet-soft); transform: rotate(40deg); animation-delay: -3s; }
+.bit-5 { top: 40%; left: 94%; width: 6px; height: 6px; background: var(--sun); border-radius: 50%; animation-delay: -12s; }
+.bit-6 { top: 86%; left: 14%; width: 7px; height: 7px; background: var(--aqua); transform: rotate(25deg); animation-delay: -7s; }
+.bit-7 { top: 8%; left: 96%; width: 6px; height: 10px; background: var(--pink); animation-delay: -14s; }
+.bit-8 { top: 52%; left: 78%; width: 5px; height: 5px; background: var(--white); border-radius: 50%; opacity: 0.5; animation-delay: -2s; }
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 60rem;
+  text-align: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.12);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.92);
+}
+
+.badge-spark {
+  width: 14px;
+  height: 14px;
+  color: var(--sun);
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+.brand {
+  display: inline-block;
+  margin-top: clamp(1.1rem, 3vw, 1.8rem);
+  font-family: var(--heading);
+  font-weight: 800;
+  font-size: clamp(3.2rem, 10vw, 6rem);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  white-space: nowrap;
+  color: var(--white);
+  text-shadow: 0 18px 60px rgb(91 46 232 / 0.45);
+}
+
+/*
+ * Medidas do logo oficial (celebra-interface/src/components/brand/logo.tsx):
+ * quadrado de 1.32em, C centrado no texto por vertical-align -0.23em e
+ * 0.03em de respiro antes de "elebra".
+ */
+.brand-mark {
+  display: inline-block;
+  width: 1.32em;
+  height: 1.32em;
+  vertical-align: -0.23em;
+  margin-right: 0.03em;
+  overflow: visible;
+}
+
+.brand-word {
+  display: inline;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.spark {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: twinkle 5s ease-in-out infinite;
+}
+
+.bit-mark {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: bit 6s ease-in-out infinite;
+}
+
+.headline {
+  margin-top: clamp(1.2rem, 3vw, 1.8rem);
+  max-width: 20ch;
+  font-family: var(--heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 5.6vw, 3.8rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.sun-word {
+  position: relative;
+  display: inline-block;
+  color: var(--sun);
+  white-space: nowrap;
+}
+
+.underline {
+  position: absolute;
+  bottom: -0.22em;
+  left: 0;
+  width: 100%;
+  height: 0.28em;
+  color: var(--sun);
+  opacity: 0.9;
+}
+
+.lead {
+  margin-top: clamp(1.1rem, 3vw, 1.6rem);
+  max-width: 44rem;
+  color: rgb(255 255 255 / 0.85);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  text-wrap: pretty;
+}
+
+.slogan {
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.62);
+}
+
+/* Recursos */
+.features {
+  width: 100%;
+  max-width: 68rem;
+  margin-top: clamp(3rem, 8vw, 5.5rem);
+}
+
+.section-title {
+  scroll-margin-top: 2rem;
+  text-align: center;
+  font-family: var(--heading);
+  font-weight: 800;
+  font-size: clamp(1.5rem, 3.6vw, 2.2rem);
+  letter-spacing: -0.01em;
+}
+
+/*
+ * Grade de recursos: 3 + 2 no desktop, 2 + 2 + 1 no tablet e 1 por linha no
+ * celular. As linhas ficam centralizadas e todos os cards têm a mesma altura.
+ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}
+
+.card {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  background: rgb(255 255 255 / 0.06);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  backdrop-filter: blur(6px);
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Quinto card: centralizado na segunda linha (3 + 2). */
+.card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+@media (max-width: 1099px) {
+  .cards {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .card:nth-child(4) {
+    grid-column: span 2;
+  }
+
+  /* Último card sozinho: centralizado (2 + 2 + 1). */
+  .card:nth-child(5) {
+    grid-column: 2 / span 2;
+  }
+}
+
+@media (max-width: 639px) {
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card,
+  .card:nth-child(4),
+  .card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  /* No celular o texto ocupa quase toda a largura: o confete da esquerda
+     passaria por trás das letras, então ele sai de cena. */
+  .bit-1 {
+    display: none;
+  }
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background: rgb(255 255 255 / 0.09);
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.18),
+    0 18px 48px rgb(27 16 64 / 0.35);
+}
+
+.card h3 {
+  font-family: var(--heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+}
+
+.card p {
+  color: rgb(255 255 255 / 0.72);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 1rem;
+}
+
+.icon svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.icon-violet { background: var(--violet); color: var(--white); }
+.icon-pink { background: var(--pink); color: var(--ink); }
+.icon-sun { background: var(--sun); color: var(--ink); }
+.icon-ink { background: rgb(255 255 255 / 0.92); color: var(--ink); }
+.icon-aqua { background: var(--aqua); color: var(--ink); }
+
+.types-label {
+  margin-top: clamp(2.4rem, 6vw, 3.6rem);
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+  margin-top: 0.9rem;
+}
+
+.types li {
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.07);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgb(255 255 255 / 0.82);
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem 0.8rem;
+  width: 100%;
+  max-width: 68rem;
+  margin-top: clamp(3rem, 8vw, 5rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid rgb(255 255 255 / 0.12);
+  font-size: 0.78rem;
+  color: rgb(255 255 255 / 0.55);
+}
+
+.footer .domain {
+  color: rgb(255 255 255 / 0.42);
+}
+
+.footer .domain::before {
+  content: "·";
+  margin-right: 0.8rem;
+  color: rgb(255 255 255 / 0.3);
+}
+
+/* Entrada suave ao carregar */
+.reveal {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+.reveal-1 { animation-delay: 0.08s; }
+.reveal-2 { animation-delay: 0.16s; }
+.reveal-3 { animation-delay: 0.24s; }
+.reveal-4 { animation-delay: 0.32s; }
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.08); opacity: 0.7; }
+}
+
+@keyframes drift {
+  0% { transform: translateY(-14px) rotate(0deg); }
+  50% { transform: translateY(14px) rotate(180deg); }
+  100% { transform: translateY(-14px) rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.65; transform: scale(0.82) rotate(18deg); }
+}
+
+@keyframes bit {
+  0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+  50% { opacity: 0.55; transform: translateY(-2px) scale(0.8); }
+}
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding-top: 2.6rem;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer .domain::before {
+    content: none;
+  }
+}
+
+/* Acessibilidade: sem movimento para quem pediu */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
