@@ -590,3 +590,28 @@ a {
     scroll-behavior: auto !important;
   }
 }
+/* Fundo igual ao do hero da landing (bg-hero, SEM campanha), preso à tela. */
+.fundo {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background-color: #1b1040;
+  background-image:
+    radial-gradient(60rem 34rem at 88% -10%, rgb(122 77 255 / 0.85), transparent),
+    radial-gradient(44rem 30rem at 0% 110%, rgb(255 79 154 / 0.45), transparent),
+    linear-gradient(160deg, #2a1470, #1b1040);
+}
+.fundo .ambient { z-index: 0; }
+.fundo .ambient span { animation: drift-down 56s linear infinite; }
+.page.sobre-fundo { background: transparent; }
+@keyframes drift-down {
+  0% { opacity: 0; transform: translateY(-10cqh) rotate(0deg); }
+  8%, 90% { opacity: var(--o, 0.8); }
+  100% { transform: translate3d(var(--dx, 24px), 108cqh, 0) rotate(var(--rot, 160deg)); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .fundo .ambient { display: none; } }
+@media (max-width: 639px) {
+  .fundo .ambient span.max-sm\:hidden { display: none; }
+}
